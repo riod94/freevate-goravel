@@ -28,5 +28,14 @@ func Api() {
 			router.Put("/{id}", userController.Update)
 			router.Delete("/{id}", userController.Destroy)
 		})
+
+		router.Prefix("/banks").Group(func(router route.Router) {
+			bankController := controllers.NewBankController()
+			router.Get("", bankController.Index)
+			router.Post("", bankController.Store)
+			router.Get("/{id}", bankController.Show)
+			router.Put("/{id}", bankController.Update)
+			router.Delete("/{id}", bankController.Destroy)
+		})
 	})
 }
